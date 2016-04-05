@@ -1,0 +1,15 @@
+body
+{
+margin: $spacing-large;
+max-width: 700px;
+width: 100%;
+
+@include sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}

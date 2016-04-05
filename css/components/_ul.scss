@@ -1,0 +1,16 @@
+ul
+{
+margin-left: $spacing-small;
+padding: 0;
+
+	li
+	{
+	list-style: none;
+	margin-top: $spacing-tiny;
+
+		&:first-child
+		{
+		margin-top: 0;
+		}
+	}
+}
