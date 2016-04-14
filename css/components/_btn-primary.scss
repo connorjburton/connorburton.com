@@ -23,4 +23,8 @@ margin: $spacing-small 0 $spacing-large $spacing-small;
 
 	@include serif;
 	}
+
+	@media (max-width: 400px) {
+		margin-left: 0;
+	}
 }

@@ -12,5 +12,9 @@ margin: $spacing-medium 0 0 $spacing-small;
 border-bottom: 1px solid black;
 font-weight: 400;
 
-@include serif; 
+@include serif;
+
+	@media (max-width: 400px) {
+		margin-left: 0;
+	}
 }
