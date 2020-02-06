@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"path"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
@@ -14,10 +15,10 @@ import (
 const PATH = "./../../"
 
 func main() {
-	source := fmt.Sprintf("%s%s", PATH, "public/index.html")
-	dest := fmt.Sprintf("%s%s", PATH, "public/cv.pdf")
+	source := path.Join(PATH, "public/index.html")
+	dest := path.Join(PATH, "public/cv.pdf")
 	
-	htmlBuf, err := readHtml(source)
+	htmlBuf, err := ioutil.ReadFile(source)
 	if err != nil {
 		panic(err)
 	}
@@ -25,7 +26,9 @@ func main() {
 	ctx, cancel := chromedp.NewContext(context.Background())
 	defer cancel()
 
-	ts := createTestServer(htmlBuf)
+	ts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, string(htmlBuf))
+	}))
 	defer ts.Close()
 
 	var buf []byte
@@ -34,23 +37,9 @@ func main() {
 		panic(err)
 	}
 
-	if err := writePdf(dest, &buf); err != nil {
+	if err := ioutil.WriteFile(dest, buf, 0644); err != nil {
 		panic(err)
 	}
-}
-
-func createTestServer(buf []byte) (*httptest.Server) {
-	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, string(buf))
-	}))
-}
-
-func writePdf(dest string, buf *[]byte) error {
-	return ioutil.WriteFile(dest, *buf, 0644)
-}
-
-func readHtml(source string) ([]byte, error) {
-	return ioutil.ReadFile(source)
 }
 
 func htmlToPdf(url string, res *[]byte) chromedp.Tasks {
