@@ -10,6 +10,7 @@
 ---------------------------------------------------------------------------------
 */
 
+/* --- Reset styles --- */
 html {
   color: #000;
   background: #fff;
@@ -641,4 +642,143 @@ p.enlarge span {
 }
 .yui-gf div.first {
   width: 12.3%;
+}
+
+/* ----------- RESPONSIVE STYLES ----------- */
+@media (max-width: 1100px) {
+  #inner {
+    padding: 10px 20px;
+    width: 95%;
+  }
+  #doc,
+  #doc2,
+  #doc3,
+  #doc4,
+  .yui-t1,
+  .yui-t2,
+  .yui-t3,
+  .yui-t4,
+  .yui-t5,
+  .yui-t6,
+  .yui-t7 {
+    width: 95%;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  #inner {
+    padding: 10px 5px;
+    margin: 10px auto;
+    border-width: 4px 0 1px 0;
+  }
+  #hd h1 {
+    font-size: 32px;
+  }
+  h2 {
+    font-size: 120%;
+  }
+  h3, h4 {
+    font-size: 110%;
+  }
+  p, .job p {
+    padding-right: 1em;
+    font-size: 95%;
+    line-height: 1.4em;
+  }
+  .yui-gf {
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+  }
+  .job h4 {
+    position: static;
+    margin-top: 0.5em;
+    float: right;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+  #doc,
+  #doc2,
+  #doc3,
+  #doc4,
+  .yui-t1,
+  .yui-t2,
+  .yui-t3,
+  .yui-t4,
+  .yui-t5,
+  .yui-t6,
+  .yui-t7 {
+    width: 100%;
+    min-width: 0;
+  }
+  #inner {
+    padding: 5px 0;
+    margin: 0;
+    border-width: 2px 0 1px 0;
+  }
+  #hd {
+    margin: 1em 0 2em 0;
+    padding-bottom: 1em;
+  }
+  #hd h1 {
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+  #hd h2 {
+    font-size: 100%;
+    letter-spacing: 1px;
+  }
+  #ft {
+    padding: 1em 0 2em 0;
+    font-size: 90%;
+  }
+  .yui-gf,
+  .job,
+  .skills-list ul,
+  .talent {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 1em;
+  }
+  .yui-gf .yui-u,
+  .yui-g .yui-u,
+  .yui-gb .yui-u,
+  .yui-gc .yui-u,
+  .yui-gd .yui-u,
+  .yui-ge .yui-u,
+  .yui-gf div.first,
+  .talent {
+    width: 100% !important;
+    float: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    display: block;
+  }
+  .job h4 {
+    position: static;
+    float: none;
+    margin-top: 0.5em;
+    font-size: 100%;
+  }
+  .skills-list li span {
+    font-size: 120%;
+  }
+}
+
+/* Utility: Make images responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Utility: Remove floats on small screens for better stacking */
+@media (max-width: 600px) {
+  [class*="yui-"], .talent {
+    float: none !important;
+    display: block !important;
+  }
 }
